@@ -22,11 +22,11 @@ const UserSchema = new Schema({
         required:[true,'age field is required']
     },todos:[{
         type: Schema.Types.ObjectId,
-        ref: 'Todo'
+        ref: 'todo'
      }]
  
 });
 
-const USer = mongoose.model('user', UserSchema);
+const User = mongoose.model('user', UserSchema);
 
-module.exports=USer;
+module.exports=User;
