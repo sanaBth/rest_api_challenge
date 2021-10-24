@@ -21,7 +21,7 @@ router.post('/textmail', (req, res) => {
         to: 'sanabenthayer30@gmail.com',
         subject: 'Sending Email using Node.js',
         text: 'That was easy!',
-      
+       html:`<h2 style="color:red">sent format html</h2>`
       };
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {

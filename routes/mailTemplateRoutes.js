@@ -1,5 +1,7 @@
 const express = require('express');
 const router =  express.Router();
+const template = require("../template");
+
 const dotenv = require('dotenv');
 dotenv.config();
 var nodemailer = require('nodemailer');
@@ -21,7 +23,7 @@ router.post('/textmail', (req, res) => {
         to: 'sanabenthayer30@gmail.com',
         subject: 'Sending Email using Node.js',
         text: 'That was easy!',
-      
+       html:`${template}`
       };
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
