@@ -38,4 +38,17 @@ var storage =   multer.diskStorage({
         return res.json({ success: "sent success",image : req.file});
     });
 });
+var uploadmulti = multer({ storage : storage}).array('userPhoto',2);
+router.post('/uploadmultimg',function(req,res){
+    uploadmulti(req,res,function(err) {
+        if(err) {
+            return res.json({ success: false, err })
+        }
+       //accepter que  jpg, jpeg, png et gif
+        
+        //res.end("File is uploaded");
+        //console.log(req.file.mimetype);
+        return res.json({ success: "sent success",image : req.files});
+    });
+});
 module.exports = router;
