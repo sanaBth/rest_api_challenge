@@ -11,7 +11,7 @@ const mailApi = require('./routes/mailRoutes');
 const htmltextApi = require('./routes/mailhtmlRoutes');
 const templateApi = require('./routes/mailTemplateRoutes');
 const attachApi = require('./routes/mailAttachements');
-
+const uploadApi = require('./routes/upload1imgRoutes');
 
 const app = express();
 mongoose.Promise = global.Promise;
@@ -26,7 +26,7 @@ app.use('/sendmail',mailApi);
 app.use('/mailtemplate',templateApi);
 app.use('/mailhtml',htmltextApi);
 app.use('/apiattach',attachApi);
-
+app.use('/apiupload',uploadApi);
 
 
 
