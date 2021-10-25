@@ -14,10 +14,28 @@ var storage =   multer.diskStorage({
   router.post('/uploadimage',function(req,res){
       upload(req,res,function(err) {
           if(err) {
-              return res.end("Error uploading file.");
+              return res.json({ success: false, err })
           }
-          res.end("File is uploaded");
+          
+          //res.end("File is uploaded");
+          //console.log(req.file.mimetype);
+          return res.json({ success: "sent success",image : req.file});
       });
   });
-
+  router.post('/filterimage',function(req,res){
+    upload(req,res,function(err) {
+        if(err) {
+            return res.json({ success: false, err })
+        }
+       //accepter que  jpg, jpeg, png et gif
+        if (req.file.mimetype!== "jpg" || req.file.mimetype!== "jpeg" || 
+        req.file.mimetype!== "png" || req.file.mimetype!== "gif" )
+         {
+          return res.json({message:"Only supports jpg, jpeg, png and gif file format"});
+        }
+        //res.end("File is uploaded");
+        //console.log(req.file.mimetype);
+        return res.json({ success: "sent success",image : req.file});
+    });
+});
 module.exports = router;
