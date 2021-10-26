@@ -8,11 +8,10 @@ const mongoose = require('mongoose');
 const todoApi = require('./routes/todoRoutes');
 const userApi = require('./routes/userRoutes');
 const mailApi = require('./routes/mailRoutes');
-const htmltextApi = require('./routes/mailhtmlRoutes');
-const templateApi = require('./routes/mailTemplateRoutes');
-const attachApi = require('./routes/mailAttachements');
-const uploadApi = require('./routes/upload1imgRoutes');
 
+const uploadApi = require('./routes/upload1imgRoutes');
+/* const cronApi = require('./crons/first-crons');
+ */
 const app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/todo');
@@ -22,12 +21,11 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/apitodo',todoApi);
 app.use('/apiuser',userApi);
+//challeneg 4
 app.use('/sendmail',mailApi);
-app.use('/mailtemplate',templateApi);
-app.use('/mailhtml',htmltextApi);
-app.use('/apiattach',attachApi);
+//challeneg 5
 app.use('/apiupload',uploadApi);
-
+/* app.use('/apicron',cronApi); */
 
 
 app.listen(process.env.port || 
