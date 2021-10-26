@@ -19,14 +19,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.use('/apitodo',todoApi);
-app.use('/apiuser',userApi);
+/* app.use('/apitodo',todoApi);
+app.use('/apiuser',userApi); */
 //challeneg 4
 app.use('/sendmail',mailApi);
 //challeneg 5
 app.use('/apiupload',uploadApi);
-/* app.use('/apicron',cronApi); */
+//get static image from directory witn config express
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
+/* app.use('/apicron',cronApi); */
 
 app.listen(process.env.port || 
   4000,function(){
