@@ -10,8 +10,8 @@ const userApi = require('./routes/userRoutes');
 const mailApi = require('./routes/mailRoutes');
 
 const uploadApi = require('./routes/upload1imgRoutes');
-/* const cronApi = require('./crons/first-crons');
- */
+const cronApi = require('./crons/first-crons');
+
 const app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/todo');
@@ -27,8 +27,8 @@ app.use('/sendmail',mailApi);
 app.use('/apiupload',uploadApi);
 //get static image from directory witn config express
 app.use('/uploads', express.static(__dirname + '/uploads'));
-
-/* app.use('/apicron',cronApi); */
+//challenge 6
+app.use('/apicron',cronApi);
 
 app.listen(process.env.port || 
   4000,function(){
