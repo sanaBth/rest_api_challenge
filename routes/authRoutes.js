@@ -2,6 +2,7 @@ const express = require('express');
 const router =  express.Router();
 const bcrypt = require ('bcrypt')
 const jwt = require("jsonwebtoken");
+const passport = require("./../passport-strategies/bearer")
 const Utilisateur = require('../models/utilisateur');
 require("dotenv").config();
 
@@ -47,15 +48,21 @@ router.post ("/createUser", async (req,res) => {
                process.env.TOKEN_KEY,{
                    expiresIn:86400
                });
-               user.token = token;
-                return res.json({success: true,user, token:  token});
+              
+                return res.json({success: true,user, token});
             } else 
             {
                 res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
             }
-
    })
 }
-   
-    }) ;
+      }) ;
+
+
+//login with passport security
+  router.get('/profile', 
+  passport.authenticate('bearer', { session: false }),
+  function(req, res) {
+    res.json(req.user);
+  });
 module.exports = router;

@@ -14,10 +14,7 @@ const UserSchema = new Schema({
      password:{
         type:String,
         required:[true,'password field is required']
-    },   token:{
-        type: String
     }
-  
  
 });
 UserSchema.methods.comparePassword = function (passw, cb) {

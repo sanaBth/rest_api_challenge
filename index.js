@@ -33,6 +33,6 @@ app.use('/apiuser',userApi); */
 app.use('/apiauth',apiauth);
 
 app.listen(process.env.port || 
-  4000,function(){
+  4001,function(){
   console.log('now listening for requests');
 });
